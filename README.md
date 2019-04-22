@@ -48,20 +48,20 @@ There are 4 tables(column names with indentation)
     *year
     *time_stamp
   
-##reviews(table)
-    *isbn(PK)
-    *user_id(PK)
-    *rating
-    *text
-    *time_stamp
+## reviews(table)
+    * isbn(PK)
+    * user_id(PK)
+    * rating
+    * text
+    * time_stamp
   
-##user(table)
-    *user_id(PK)
-    *password
-    *time_stamp
+## user(table)
+    * user_id(PK)
+    * password
+    * time_stamp
 
-##syslog(table)
-    *log_id(PK)
-    *time_stamp
-    *log_text
+## syslog(table)
+    * log_id(PK)
+    * time_stamp
+    * log_text
     
