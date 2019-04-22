@@ -41,19 +41,19 @@ The database used is Postgres and the shema name should be d_book
 
 There are 4 tables(column names with indentation)
 
-books
-  isbn(PK)
-  title
-  author
-  year
-  time_stamp
+* books
+    **isbn(PK)
+    **title
+    **author
+    **year
+    **time_stamp
   
-reviews
-  isbn(PK)
-  user_id(PK)
-  rating
-  text
-  time_stamp
+*reviews
+    **isbn(PK)
+    **user_id(PK)
+    **rating
+    **text
+    **time_stamp
   
 user
   user_id(PK)
