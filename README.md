@@ -23,7 +23,7 @@ API:
      
 Below listed are the file names and a short description explaining their purpose.
 
-*Files:Descriptions
+# Files:Descriptions
 
 1. static/D_Book.png : Logo for the site header.
 2. static/no_image.jpg : Display pic for each book on the detail page.
