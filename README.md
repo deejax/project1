@@ -23,17 +23,17 @@ API:
      
 Below listed are the file names and a short description explaining their purpose.
 
-Files:Descriptions
+*Files:Descriptions
 
-static/D_Book.png : Logo for the site header.
-static/no_image.jpg : Display pic for each book on the detail page.
-static/styles.css : Style sheet of the site.
-templates/layout.html : Site Layout template.
-templates/index.html : main page with search and listing of books.
-templates/auth.html : login and sign up page.
-templates/details.html :details of the selected book and list of its reviews.
-/application.py: main python program populating the site with data.
-/import.py : import the books provided in books.csv to the site database.
+1. static/D_Book.png : Logo for the site header.
+2. static/no_image.jpg : Display pic for each book on the detail page.
+3. static/styles.css : Style sheet of the site.
+4. templates/layout.html : Site Layout template.
+5. templates/index.html : main page with search and listing of books.
+6. templates/auth.html : login and sign up page.
+7. templates/details.html :details of the selected book and list of its reviews.
+8. /application.py: main python program populating the site with data.
+9. /import.py : import the books provided in books.csv to the site database.
 
 DataBase:
 
