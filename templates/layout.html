@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    </head>
+        <title>D Books - {% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="static/styles.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      </head>
     <body>
-        <div class="container">
-            {% block body %}
-            {% endblock %}
-        </div>
+
+      <div class="wrapper">
+        <header>
+        <a href ="/"><img class ="logo" src="static/D_Book.png"></a>
+        {% block body %}
+        {% endblock %}
+        <footer>
+          <p>Submitted by <a href ="https://www.linkedin.com/in/deepu-jaxon/">Deepu Jaxon</a> for <a href="https://docs.cs50.net/web/2018/x/projects/1/project1.html">Project 1</a> assignment of the <a href ="https://www.edx.org/course/cs50s-web-programming-with-python-and-javascript">CS50 Web Development Course.</a></p>
+          <p  class="text-center">Built using <span class="badge badge-primary">HTML</span>,
+            <span class="badge badge-warning">CSS</span> ,
+            <span class="badge badge-dark">Bootstrap</span> ,
+            <span class="badge badge-light">Flask</span> ,
+            <span class="badge">Python</span> ,
+            <span class="badge badge-success">SQLAlchemy</span>
+            and <span class="badge badge-info">Postgres</span>
+          </p>
+        </footer>
+      </div>
     </body>
 </html>

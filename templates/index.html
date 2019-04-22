@@ -1,29 +1,67 @@
 {% extends "layout.html" %}
-
 {% block title %}
-    Flights
+  {% if user %}
+      Search Books
+  {% else %}
+      Review your favorite books
+  {% endif %}
 {% endblock %}
-
+<!-- logo image: logomakr.com/8oVO3l -->
 {% block body %}
-    <h1>Book a Flight</h1>
-
-    <form action="{{ url_for('book') }}" method="post">
-
-        <div class="form-group">
-            <select class="form-control" name="flight_id">
-                {% for flight in flights %}
-                    <option value="{{ flight.id }}">{{ flight.origin }} to {{ flight.destination }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="form-group">
-            <input class="form-control" name="name" placeholder="Passenger Name">
-        </div>
-
-        <div class="form-group">
-            <button class="btn btn-primary">Book Flight</button>
-        </div>
-
-    </form>
+        {% if user %}
+            <form action="{{ url_for('user_nav') }}" method="post">
+            <b><input type="submit" name ="but_act" value="Sign Out"  class="btn btn-outline-danger boxes"></b>
+            </form>
+            <button type="button" class="btn btn-success  boxes"><b>Hello, {{ user}} </b></button>
+          {% else %}
+            <form action="{{ url_for('user_nav') }}" method="post">
+            <b><input type="submit" name ="but_act" value="Sign Up" class="btn btn-outline-info boxes"></b>
+            </form>
+            <form action="{{ url_for('user_nav') }}" method="post" >
+            <b><input type="submit" name ="but_act" value="Sign In" class="btn btn-outline-success  boxes" ></b>
+            </form>
+        {% endif %}
+          <h1></h1>
+      </header>
+      <div class="body">
+        {% if user %}
+          <center>
+            <form action="{{ url_for('index') }}" method="post">
+              <div class="input-group col-lg-6 col-sm-6">
+                <input type="text" class="form-control" placeholder="Enter author name, title or ISBN..."  name="search">
+                <div class="input-group-append">
+                  <input type="submit" name ="but_act" value="Go" class="btn btn-info" >
+                </div>
+              </div>
+            </form>
+            <br>
+            {% if book_list %}
+              <h5>Search Results</h5>
+            {% else %}
+              <h5>No Results</h5>
+            {% endif %}
+            {% if error %}
+            <div class="alert alert-danger gap" role="alert">
+              {{error}}
+            </div>
+            {% endif %}
+          </center>
+          <ul "list-group col-lg-6 col-sm-8">
+            {%for book in book_list %}
+              <li class="list-group-item hilite">
+                <a href="{{ url_for('details' , isbn=book.isbn) }}">
+                  ISBN :<b>{{book.isbn}}</b>
+                  Title :<b>{{book.title}}</b>
+                  Author :<b>{{book.author}}</b>
+                  Year :<b>{{book.year}}</b>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <center>
+            <h5>Review and Rate your favorite books. Sign in or Sign up to get started.</h5>
+          </center>
+        {% endif %}
+       </div>
 {% endblock %}

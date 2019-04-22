@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block title %}
+Details
+{% endblock %}
+
+{% block body %}
+            <form action="{{ url_for('user_nav') }}" method="post">
+            <b><input type="submit" name ="but_act" value="Sign Out"  class="btn btn-outline-danger boxes"></b>
+            </form>
+            <button type="button" class="btn btn-success  boxes"><b>Hello, {{ user}} </b></button>
+            <h1></h1>
+      </header>
+        <div class="body">
+          <h5><b>{{book.title}}</b></h5>
+          {% if error %}
+          <div class="alert alert-danger gap" role="alert">
+            {{error}}
+          </div>
+          <br>
+          {% endif %}
+
+          {% if message %}
+          <div class="alert alert-success gap" role="alert">
+            {{message}}
+          </div>
+          <br>
+          {% endif %}
+          <img src="static/no_image.jpg">
+          <ul class="list-group col-lg-8 col-sm-8">
+          <li class="list-group-item"><b>ISBN :</b>{{book.isbn}}</li>
+          <li class="list-group-item"><b>Author :</b>{{book.author}}</li>
+          <li class="list-group-item"><b>Publication Year :</b>{{book.year}}</li>
+          <li class="list-group-item"><b>Average D-Book Rating :</b><span class="badge badge-success badge-pill">{{avg_rat}}</span></li>
+          <li class="list-group-item"><b><a href="https://www.goodreads.com/">From Goodreads.com :</a></b>
+            <ul class="list-group">
+                <li class="list-group-item">Average Rating :<span class="badge badge-primary badge-pill">{{gr_rat}}</span></li>
+                <li class="list-group-item">Number of Reviews :<span class="badge badge-primary badge-pill">{{rev_no}}</span></li>
+            </ul>
+          </li>
+          <li class="list-group-item"><h5><center>Reviews</h5>
+          <dl >
+              {%for review in reviews %}
+              <div class="alert alert-info" role="alert">
+                <dt>
+                    <b>User :</b> &nbsp;
+                    {{review.user_id}} &nbsp;
+                    <b>Date :</b> &nbsp;
+                     {{review.date}} &nbsp;
+                     <b>Rating :</b> &nbsp;
+                     {{review.rating}}
+                </dt>
+                <dd>
+                    {% if review.text %}
+                    {{review.text}}
+                    {% else %}
+                    No comments entered.
+                    {% endif %}
+                </dd>
+              </div>
+              {% else %}
+                <dt>No reviews yet, be the first one to write one.</dt>
+              {% endfor %}
+            </dl>
+          </li>
+          </ul>
+
+          <div class="form-group col-lg-8 col-sm-8">
+          <br>
+            <h5>Write Your Review</h5>
+
+
+            <form action="{{ url_for('details' ,isbn=book.isbn) }}" method="post" >
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="review_rating" id="inlineRadio1" value=1 required>
+              <label class="form-check-label" for="inlineRadio1">1 :Bad</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="review_rating" id="inlineRadio2" value=2>
+              <label class="form-check-label" for="inlineRadio2">2 : Average</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="review_rating" id="inlineRadio3" value=3>
+              <label class="form-check-label" for="inlineRadio3">3 : Good</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="review_rating" id="inlineRadio4" value=4>
+              <label class="form-check-label" for="inlineRadio4">4 : Very Good</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="review_rating" id="inlineRadio3" value=5>
+              <label class="form-check-label" for="inlineRadio5">5 : Excellent</label>
+            </div>
+            <textarea class="form-control" rows="4" name="rev_text"></textarea>
+              <br>
+              <input type="submit" name ="but_act" value="Submit" class="btn btn-info gap">
+            </form>
+          </div>
+        </div>
+{% endblock %}
